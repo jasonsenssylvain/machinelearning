@@ -139,7 +139,8 @@ def fit_network(train_X,train_y,test_X,test_y,scaler):
   print('Test RMSE: %.3f' % rmse)
 
 if __name__ == '__main__':
-  drow_pollution()
-  reframed,scaler = cs_to_sl()
-  train_X,train_y,test_X,test_y = train_test(reframed)
-  fit_network(train_X,train_y,test_X,test_y,scaler)
+	read_raw()
+	drow_pollution()
+	reframed,scaler = cs_to_sl()
+	train_X,train_y,test_X,test_y = train_test(reframed)
+	fit_network(train_X,train_y,test_X,test_y,scaler)

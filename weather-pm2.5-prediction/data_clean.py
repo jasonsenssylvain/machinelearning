@@ -4,7 +4,7 @@ from datetime import datetime
 # load data
 def parse_date(x):
     return datetime.strptime(x, '%Y %m %d %H')
-dataset = read_csv('PRSA_data_2010.1.1-2014.12.31.csv',  parse_dates = [['year', 'month', 'day', 'hour']], index_col=0, date_parser=parse_date)
+dataset = read_csv('raw.csv', parse_dates = [['year', 'month', 'day', 'hour']], index_col=0, date_parser=parse_date)
 dataset.drop('No', axis=1, inplace=True)
 # manually specify column names
 dataset.columns = ['pollution', 'dew', 'temp', 'press', 'wnd_dir', 'wnd_spd', 'snow', 'rain']
