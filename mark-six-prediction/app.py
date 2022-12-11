@@ -27,6 +27,7 @@ for line in lines:
 	history.append(dataArray)
 
 # print(history)
+history.reverse()
 df = pd.DataFrame(np.array(history),
 	columns=list('ABCDEFG'))
 print(df.head())
@@ -78,22 +79,11 @@ model.compile(loss='mse', optimizer='rmsprop', metrics=['accuracy'])
 
 model.fit(train, label, batch_size=batch_size, epochs=100)
 
+currData = history[-13:]
+print(currData)
+
 ## start predict
-to_predict = np.array([
-	history[0],
-	history[1],
-	history[2],
-	history[3],
-	history[4],
-	history[5],
-	history[6],
-	history[7],
-	history[8],
-	history[9],
-	history[10],
-	history[11],
-	history[12]
-])
+to_predict = np.array(currData)
 scaled_to_predict = scaler.transform(to_predict)
 scaled_output = model.predict(np.array([scaled_to_predict]))
 result_predict = scaler.inverse_transform(scaled_output).astype(int)[0]
