@@ -6,7 +6,7 @@ from sklearn.preprocessing import StandardScaler
 from keras.models import Sequential
 from keras.layers import LSTM, Dense, Bidirectional, Dropout
 
-import collect_data1
+# import collect_data1
 
 PATH = r"ssq1.txt"
 ssq = open(PATH)
@@ -79,7 +79,7 @@ model.compile(loss='mse', optimizer='rmsprop', metrics=['accuracy'])
 
 model.fit(train, label, batch_size=batch_size, epochs=100)
 
-currData = history[-13:]
+currData = history[-window_length:]
 print(currData)
 
 ## start predict

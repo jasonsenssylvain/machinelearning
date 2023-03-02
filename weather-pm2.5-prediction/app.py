@@ -134,13 +134,14 @@ def fit_network(train_X,train_y,test_X,test_y,scaler):
   # invert scaling for actual
   inv_y = scaler.inverse_transform(test_X)
   inv_y = inv_y[:,0]
+  print(inv_y)
   # calculate RMSE
   rmse = sqrt(mean_squared_error(inv_y, inv_yhat))
   print('Test RMSE: %.3f' % rmse)
 
 if __name__ == '__main__':
-	read_raw()
-	drow_pollution()
+	# read_raw()
+	# drow_pollution()
 	reframed,scaler = cs_to_sl()
 	train_X,train_y,test_X,test_y = train_test(reframed)
 	fit_network(train_X,train_y,test_X,test_y,scaler)
